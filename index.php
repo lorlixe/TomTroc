@@ -10,8 +10,11 @@ try {
     switch ($action) {
             // Pages accessibles à tous.
         case 'home':
-            $BoolController = new BookController();
-            $BoolController->showHome();
+            $bookController = new BookController();
+            $authorController = new AuthorController();
+            $authorController->allAuthor();
+            $bookController->allBook();
+
             break;
 
         default:

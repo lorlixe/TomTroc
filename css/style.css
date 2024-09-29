@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/**
+ * Déclaration des couleurs.
+ */
+:root {
+  --backgroundColor: #f5f3ef;
+  --headerColor: #d79922;
+  --headerPaleColor: #efe1ba;
+  --titleColor: #000000;
+  --text: #000000;
+  --dateColor: #3f56a4;
+  --quoteColor: #c5cbe4;
+  --commentPaleColor: #99a140;
+  --commentColor: #255e33;
+}
+
+/**
+   * Valeur par défaut pour les balises.
+   */
+body {
+  font-family: "inter", sans-serif;
+  background-color: var(--backgroundColor);
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2em;
+  width: 100%;
+}
+
+#menu {
+  display: flex;
+  list-style-type: none;
+  width: 65%;
+  justify-content: space-between;
+}
+
+#logo {
+  width: 15em;
+}
+
+.sous_menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sous_menu li {
+  margin: 2em;
+}
+
+.sous_menu li a {
+  text-decoration: none;
+  margin-left: 5px;
+
+  color: var(--text);
+}

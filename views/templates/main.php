@@ -24,8 +24,20 @@
 <body>
     <header>
         <nav>
-            <h1> TomTroc
-            </h1>
+            <img id="logo" src="img/logo.png" alt="logo">
+            <div id="menu">
+                <div class="sous_menu">
+                    <li> <a href="">Accueil</a>
+                    </li>
+                    <li> <a href="">Nos livres à l’échange</a>
+                    </li>
+                </div>
+                <div class="sous_menu">
+                    <li><img src="img/IconMessagerie.png" alt=""><a href=""> Messagerie</a></li>
+                    <li><img src="img/Icon_mon_compte.png" alt=""><a href="">Mon compte</a></li>
+                    <li><a href="">Connexion</a></li>
+                </div>
+            </div>
         </nav>
     </header>
 
