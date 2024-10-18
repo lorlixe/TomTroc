@@ -11,9 +11,9 @@ try {
             // Pages accessibles à tous.
         case 'home':
             $bookController = new BookController();
-            $authorController = new AuthorController();
-            $authorController->allAuthor();
-            $bookController->allBook();
+            // $authorController = new AuthorController();
+            // $authorController->allAuthor();
+            $bookController->lastBook();
 
             break;
 

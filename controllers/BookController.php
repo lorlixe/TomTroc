@@ -6,10 +6,17 @@ class BookController
     {
 
         $bookManager = new bookManager();
-        $book = $bookManager->getAllBook();
-        $authorManager = new AuthorManager();
-        $author = $authorManager->getAllAuthor();
+        $books = $bookManager->getAllBook();
+        // $authorManager = new AuthorManager();
+        // $author = $authorManager->getAllAuthor();
         $view = new View("Accueil");
-        $view->render("home", ['books' => $book, 'authors' => $author]);
+        $view->render("home", ['books' => $books]);
+    }
+    public function lastBook(): void
+    {
+        $bookManager = new bookManager();
+        $lastBooks = $bookManager->getLastBook();
+        $view = new View("Accueil");
+        $view->render("home", ['lastBooks' => $lastBooks]);
     }
 }

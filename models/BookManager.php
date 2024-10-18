@@ -8,7 +8,7 @@ class BookManager extends AbstractEntityManager
      */
     public function getAllBook(): array
     {
-        $sql = "SELECT * FROM book";
+        $sql = "SELECT book.*, author.name FROM book INNER JOIN author ON author.id = book.author_id;";
         $result = $this->db->query($sql);
         $books = [];
 
@@ -18,4 +18,25 @@ class BookManager extends AbstractEntityManager
 
         return $books;
     }
+
+    public function getLastBook(): array
+    {
+        $sql = "SELECT book.*, author.name FROM book INNER JOIN author ON author.id = book.author_id ORDER BY book.id DESC LIMIT 4;";
+        $result = $this->db->query($sql);
+        $lastbooks = [];
+
+        while ($lastbook = $result->fetch()) {
+            $lastbooks[] = new Book($lastbook);
+        }
+
+        return $lastbooks;
+    }
+
+    //     SELECT book.*, author.name, book_library_relation.library_id, library.user_id, user.nickname FROM book 
+    // INNER JOIN author ON author.id = book.author_id 
+    // INNER JOIN book_library_relation ON book_library_relation.book_id = book.id
+    // INNER JOIN library ON library.id = book_library_relation.library_id
+    // INNER JOIN user ON user.id = library.user_id 
+    // ORDER BY book.id DESC LIMIT 4;
+
 }

@@ -11,7 +11,7 @@ class Book extends AbstractEntity
     private string $img = "";
     private string $statut = "";
     private int $author_id = 0;
-
+    private string $name = "";
 
 
     /**
@@ -102,5 +102,14 @@ class Book extends AbstractEntity
     public function getAuthorId(): int
     {
         return $this->author_id;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+    public function getName(): string
+    {
+        return $this->name;
     }
 }

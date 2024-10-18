@@ -46,7 +46,10 @@
     </main>
 
     <footer>
-        <p>Footer</p>
+        <p>Politique de confidentialité</p>
+        <p>Mentions légales</p>
+        <p>Tom Troc©</p>
+        <img src="img/minilogo.png" alt="">
     </footer>
 
 </body>
