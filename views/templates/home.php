@@ -9,28 +9,29 @@
     </div>
     <div class="bookList">
         <h2>Les derniers livres ajoutés</h2>
-        <div class="last_book">
+        <div id="books">
             <?php foreach ($lastBooks as $book) { ?>
-                <article class="book_card">
-                    <div class="card_img">
-                        <img class="book_img" src=<?= $book->getImg() ?> />
-                    </div>
-                    <div class="book_description">
-                        <div class="book_info">
-                            <h3><?= $book->getTitle() ?></h3>
-                            <p><?= $book->getName() ?></p>
-
-
+                <a href="index.php?action=detail_books&id=<?= $book->getId() ?>">
+                    <article class="book_card">
+                        <div class="card_img">
+                            <img class="book_img" src=<?= $book->getImg() ?> />
                         </div>
-                        <div class="saler">
-                            <p>Vendu par :</p>
+                        <div class="book_description">
+                            <div class="book_info">
+                                <h3><?= $book->getTitle() ?></h3>
+                                <p><?= $book->getName() ?></p>
+                            </div>
+                            <div class="saler">
+                                <p>Vendu par :<?= $book->getNickname() ?></p>
+                            </div>
                         </div>
-                    </div>
 
-                </article>
+                    </article>
+                </a>
+
             <?php } ?>
         </div>
-        <button class="cta">Voir tous les livres</button>
+        <a href="index.php?action=all_books" class="cta">Voir tous les livres</a>
 
     </div>
     <div id="tuto_section">
@@ -53,7 +54,7 @@
                 Proposez un échange et discutez avec d'autres passionnés de lecture.
             </div>
         </div>
-        <button class="cta">Voir tous les livres</button>
+        <a href="index.php?action=all_books" class="cta">Voir tous les livres</a>
 
     </div>
 

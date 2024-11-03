@@ -7,10 +7,8 @@ class BookController
 
         $bookManager = new bookManager();
         $books = $bookManager->getAllBook();
-        // $authorManager = new AuthorManager();
-        // $author = $authorManager->getAllAuthor();
-        $view = new View("Accueil");
-        $view->render("home", ['books' => $books]);
+        $view = new View("livres");
+        $view->render("allBooks", ['books' => $books]);
     }
     public function lastBook(): void
     {
@@ -18,5 +16,17 @@ class BookController
         $lastBooks = $bookManager->getLastBook();
         $view = new View("Accueil");
         $view->render("home", ['lastBooks' => $lastBooks]);
+    }
+    public function BookById(): void
+    {
+        $id = Utils::request("id", -1);
+
+        $bookManager = new bookManager();
+        $book = $bookManager->getBookById($id);
+        if (!$book) {
+            throw new Exception("L'article demandé n'existe pas.");
+        }
+        $view = new View("livre");
+        $view->render("detail", ['book' => $book]);
     }
 }
