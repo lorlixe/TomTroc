@@ -24,9 +24,28 @@ class BookController
         $bookManager = new bookManager();
         $book = $bookManager->getBookById($id);
         if (!$book) {
-            throw new Exception("L'article demandé n'existe pas.");
+            throw new Exception("Le livre demandé n'existe pas.");
         }
         $view = new View("livre");
         $view->render("detail", ['book' => $book]);
+    }
+
+    public function bookForm(): void
+    {
+        $id = Utils::request("id", -1);
+
+        $bookManager = new bookManager();
+        $book = $bookManager->getBookById($id);
+        if (!$book) {
+            throw new Exception("Le livre demandé n'existe pas.");
+        }
+        $view = new View("editBook");
+        $view->render("editBook", ['book' => $book]);
+    }
+
+    public function newBookForm(): void
+    {
+        $view = new View("newBook");
+        $view->render("newBook");
     }
 }

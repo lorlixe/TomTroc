@@ -37,12 +37,12 @@
                     // Si on est connecté, on affiche les boutons suivant, sinon, on affiche le bouton de connexion : 
                     if (isset($_SESSION['user'])) {
                         echo '<li><img src="img/IconMessagerie.png" alt=""><a href=""> Messagerie</a></li>';
-                        echo '<li><img src="img/Icon_mon_compte.png" alt=""><a href="">Mon compte</a></li>';
+                        echo '<li><img src="img/Icon_mon_compte.png" alt=""><a href="index.php?action=userAccount">Mon compte</a></li>';
                         echo '<li><a href="index.php?action=disconnectUser">Déconnexion</a></li>';
                     } else {
-                        echo '<li><img src="img/IconMessagerie.png" alt=""><a href="index.php?action=connectionForm"> Messagerie</a></li>';
-                        echo '<li><img src="img/Icon_mon_compte.png" alt=""><a href="index.php?action=connectionForm">Mon compte</a></li>';
-                        echo '<li><a href="index.php?action=connectionForm">Connexion</a></li>';
+                        echo '<li><img src="img/IconMessagerie.png" alt=""><a href="index.php?action=signIn"> Messagerie</a></li>';
+                        echo '<li><img src="img/Icon_mon_compte.png" alt=""><a href="index.php?action=signIn">Mon compte</a></li>';
+                        echo '<li><a href="index.php?action=signIn">Connexion</a></li>';
                     }
                     ?>
                 </div>

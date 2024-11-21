@@ -90,6 +90,7 @@ nav {
 
 a:hover {
   font-weight: bold;
+  cursor: pointer;
 }
 
 .cta {
@@ -101,6 +102,9 @@ a:hover {
   max-width: 30%;
   text-decoration: none;
   font-weight: bold;
+}
+.cta:hover {
+  cursor: pointer;
 }
 #home {
   width: 100%;
@@ -139,6 +143,10 @@ a:hover {
 }
 a {
   text-decoration: none;
+  color: #292929;
+}
+a:visited {
+  color: inherit;
 }
 
 .book_card {
@@ -379,4 +387,232 @@ footer p {
 }
 .book_page_text {
   font-weight: bold;
+}
+
+/* !!!!!!!!!!!!!! connexion !!!!!!!!!!!!!!!!!!!*/
+
+.connection-form {
+  display: flex;
+  background-color: var(--backgroundColor);
+}
+.connection-form h2 {
+  padding-bottom: 3em;
+}
+.imgConnexion {
+  width: 50%;
+}
+
+.foldedCorner {
+  width: 50%;
+  padding: 5em;
+}
+
+.formGrid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fieldForm {
+  width: 322px;
+  height: 50px;
+  border-radius: 6px;
+  border: none;
+  background: #ffffff;
+}
+
+.labelField {
+  display: flex;
+  flex-direction: column;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.94px;
+  text-align: left;
+  color: #a6a6a6;
+  padding-bottom: 3em;
+}
+
+label {
+  padding-bottom: 2em;
+}
+
+.connection-form .cta {
+  width: 100%;
+  max-width: 100%;
+}
+
+.sign {
+  padding-top: 2em;
+}
+
+/* ////////////// my account ///////////////: */
+#my-account h1 {
+  text-align: left;
+  margin: 2em 8%;
+}
+.user-detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.user-description {
+  background-color: var(--backgroundColor);
+  padding: 0% 10%;
+  border-radius: 30px;
+  margin-right: 5%;
+  width: 40%;
+}
+.user-description hr {
+  margin: 50px 0 70px 0;
+  color: #a6a6a6;
+}
+.display-user-information-section #member-year {
+  color: #a6a6a6;
+  font-size: 1.5em;
+  margin: 1em 0;
+}
+.display-user-information-section #member-book-number {
+  font-size: 1.2em;
+  text-align: center;
+  margin: 0.5em;
+  margin-bottom: 3em;
+}
+.cta-user {
+  background-color: #f5f3ef;
+  color: #00ac66;
+  border: solid 1px;
+  margin: 17%;
+}
+.display-user-information-section h3 {
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 9.68px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.user-descrption-photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
+#display-user-information .display-user-information-section {
+  margin-top: 1.2em;
+}
+
+.user-description .user_profil_img {
+  width: 8em;
+}
+
+.user-information {
+  background-color: var(--backgroundColor);
+  padding: 0 5%;
+  width: 40%;
+  border-radius: 30px;
+}
+.user-information h3 {
+  padding: 50px 0;
+  font-size: 1.5em;
+  font-weight: 400;
+}
+.user-detail label {
+  padding-bottom: 0.5em;
+  font-size: 1.2em;
+}
+
+.user-detail input {
+  width: 30em;
+}
+/* Style tableau */
+.user-book {
+  width: 84%;
+  margin: 0 8%;
+}
+
+.user-article {
+  margin: 50px 0;
+}
+
+.bookLine {
+  display: grid;
+  grid-template-columns: 0.7fr 1.5fr 1fr 2fr 1fr 1fr; /* Définition des largeurs de colonne */
+  align-items: center;
+  padding: 30px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.title {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limite à 3 lignes */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bookLine:nth-child(odd) {
+  background-color: #edf2f6;
+}
+
+.bookLine:nth-child(even) {
+  background-color: var(--backgroundColor);
+}
+
+/* Style de l’en-tête du tableau */
+.bookLine.header {
+  font-weight: bold;
+  font-size: 0.5em;
+  background-color: var(--backgroundColor);
+}
+
+/* Style de chaque colonne */
+.book_img {
+  width: 70px;
+  height: 70px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.bookLine .title {
+  font-weight: normal;
+  font-size: 14px;
+}
+
+/* Description en italique */
+.bookLine .title:nth-child(4) {
+  font-style: italic;
+  font-weight: normal;
+}
+
+/* Disponibilité */
+.disponible {
+  color: white;
+  background-color: #4caf50;
+  border-radius: 12px;
+  padding: 5px 10px;
+  font-size: 12px;
+  display: inline-block;
+  text-align: center;
+}
+
+.non-dispo {
+  color: white;
+  background-color: #d9534f;
+  border-radius: 12px;
+  padding: 5px 10px;
+  font-size: 12px;
+  display: inline-block;
+  text-align: center;
+}
+
+.link.edit {
+  text-decoration: underline;
+  margin-right: 10px;
+}
+
+.link.supp {
+  text-decoration: underline;
+  color: #d9534f;
 }

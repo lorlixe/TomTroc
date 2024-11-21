@@ -1,35 +1,34 @@
 <?php
 
 /**
- * Entité User : un user est défini par son id, un login et un password.
+ * Entité User : un user est défini par son id, un email et un password.
  */
 class User extends AbstractEntity
 {
-    private string $login;
+    private string $email;
     private string $password;
     private string $nickname;
     private string $user_photo;
-
-
-
+    private string $statut;
+    private string $creation_date;
 
 
     /**
-     * Setter pour le login.
-     * @param string $login
+     * Setter pour le email.
+     * @param string $email
      */
-    public function setLogin(string $login): void
+    public function setEmail(string $email): void
     {
-        $this->login = $login;
+        $this->email = $email;
     }
 
     /**
-     * Getter pour le login.
+     * Getter pour le email.
      * @return string
      */
-    public function getLogin(): string
+    public function getEmail(): string
     {
-        return $this->login;
+        return $this->email;
     }
 
     /**
@@ -71,7 +70,7 @@ class User extends AbstractEntity
      * Setter pour le user_photo.
      * @param string $user_photo
      */
-    public function setUser_photo(string $user_photo): void
+    public function setUserPhoto(string $user_photo): void
     {
         $this->user_photo = $user_photo;
     }
@@ -80,8 +79,26 @@ class User extends AbstractEntity
      * Getter pour le user_photo.
      * @return string
      */
-    public function getUser_photo(): string
+    public function getUserPhoto(): string
     {
         return $this->user_photo;
+    }
+
+    public function setStatut(string $statut): void
+    {
+        $this->statut = $statut;
+    }
+    public function getStatut(): string
+    {
+        return $this->statut;
+    }
+    public function getCreationDate(): string
+    {
+        return $this->creation_date;
+    }
+
+    public function setCreationDate(string $creation_date): void
+    {
+        $this->creation_date = $creation_date;
     }
 }

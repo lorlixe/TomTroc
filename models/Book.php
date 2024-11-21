@@ -8,12 +8,13 @@ class Book extends AbstractEntity
 {
     private string $title = "";
     private string $description = "";
-    private string $img = "";
+    private string $img = "img/livre_sans_img.jpg";
     private string $statut = "";
     private int $author_id = 0;
     private string $name = "";
     private string $nickname = "";
     private string $user_photo = "";
+
 
     /**
      * Setter pour le titre.

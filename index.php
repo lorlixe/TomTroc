@@ -27,22 +27,53 @@ try {
 
         case 'signIn':
             $userController = new userController();
-            $userController->displayConnectionForm();
+            $userController->displaysignInForm();
             break;
-        case 'connectionForm':
+        case 'signUp':
             $userController = new userController();
-            $userController->displayConnectionForm();
+            $userController->displaysignUpForm();
             break;
 
         case 'connectUser':
             $userController = new userController();
             $userController->connectUser();
             break;
+        case 'addUser':
+            $userController = new userController();
+            $userController->addUser();
+            break;
+        case 'updateUser':
+            $userController = new userController();
+            $userController->updateUserInfo();
+            break;
+
 
         case 'disconnectUser':
             $userController = new userController();
             $userController->disconnectUser();
             break;
+        case 'userAccount':
+            $userController = new userController();
+            $userController->userAccount();
+            break;
+
+        case 'editBook':
+            $userController = new userController();
+            $userController->updateOrCreatBook();
+            break;
+        case 'bookForm':
+            $bookController = new BookController();
+            $bookController->bookForm();
+            break;
+        case 'deleteBook':
+            $userController = new userController();
+            $userController->deleteBook();
+            break;
+        case 'newBookForm':
+            $bookController = new BookController();
+            $bookController->newBookForm();
+            break;
+
 
         default:
             throw new Exception("La page demandée n'existe pas.");
