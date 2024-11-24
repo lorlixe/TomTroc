@@ -22,8 +22,8 @@
                 <div class="labelField">
                     <label for="statut">Disponibilité :</label>
                     <select name="statut" id="availability" class="fieldForm">
-                        <option value="disponible" <?= ($book->getStatut() === 'disponible' ? 'selected' : '') ?>>Disponible</option>
-                        <option value="indisponible" <?= ($book->getStatut() === 'indisponible' ? 'selected' : '') ?>>Indisponible</option>
+                        <option value="Disponible" <?= ($book->getStatut() === 'Disponible' ? 'selected' : '') ?>>Disponible</option>
+                        <option value="Indisponible" <?= ($book->getStatut() === 'Indisponible' ? 'selected' : '') ?>>Indisponible</option>
                     </select>
                 </div>
                 <div class="labelField">

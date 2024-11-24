@@ -11,6 +11,9 @@ $interval = $creation_date->diff($current_date);
 ?>
 <div id="my-account">
     <h1>Mon compte</h1>
+    <div class="user-btn">
+        <a class="cta cta-user" href="index.php?action=newBookForm">Ajouter un livre</a>
+    </div>
     <div class="user-detail">
         <div class="user-description">
             <div class="user-descrption-photo">
@@ -19,7 +22,12 @@ $interval = $creation_date->diff($current_date);
                 <?php else: ?>
                     <img class="user_profil_img" src="img/blank-profile-picture.png" />
                 <?php endif; ?>
-                <a class="link" href="">modifier</a>
+                <a id="uploadLink" class="link" href="#">modifier</a>
+                <form id="uploadForm" action="index.php?action=updateUserImg" method="POST" enctype="multipart/form-data" style="display: none;">
+                    <input type="file" id="fileInput" name="image" accept="image/*" onchange="document.getElementById('uploadForm').submit();">
+                    <button class="link">Enregistrer</button>
+
+                </form>
             </div>
             <hr>
 
@@ -32,37 +40,41 @@ $interval = $creation_date->diff($current_date);
                     <h3>BIBLIOTHEQUE</h3>
                     <div id="member-book-number"> <img src="img/icon_livre.png" /> <?= count($books) ?> Livres</div>
                 </div>
-
-                <div class="display-user-information-section">
-                    <a class="cta cta-user" href="index.php?action=newBookForm">Ajouter un livre</a>
-                </div>
             </div>
 
 
         </div>
         <div class="user-information">
             <h3>Vos informations personnelles</h3>
+
+
             <div class="formGrid">
+
                 <div>
-                    <div class="labelField">
-                        <label for="nickname">Pseudo</label>
-                        <input type="text" id="nickname" name="nickname" class="fieldForm" required>
+                    <form action="index.php?action=updateUser" method="post">
+                        <div class="labelField">
+                            <label for="nickname">Pseudo</label>
+                            <input type="text" id="nickname" name="nickname" class="fieldForm" value="<?= $user->getNickname() ?>" required>
 
-                    </div>
-                    <div class="labelField">
-                        <label for="login">Email</label>
-                        <input type="email" name="login" id="login" class="fieldForm" required>
-                    </div>
-                    <div class="labelField">
-                        <label for="password">Mot de passe</label>
-                        <input type="password" id="password" name="password" class="fieldForm" required>
-                    </div>
+                        </div>
+                        <div class="labelField">
+                            <label for="login">Email</label>
+                            <input type="text" name="email" id="email" class="fieldForm" value="<?= $user->getEmail() ?>" required>
+                        </div>
+                        <div class="labelField">
+                            <label for="password">Mot de passe</label>
+                            <input type="password" id="password" name="password" class="fieldForm" required>
+                        </div>
+                        <button class="cta cta-user">Enregistrer</button>
 
-                    <button class="cta cta-user" href="index.php?action=updateUser">Enregistrer</button>
+                    </form>
+
+
                 </div>
             </div>
         </div>
     </div>
+
     <div class="user-book">
         <div class="user-article">
             <div class="bookLine header">
@@ -76,7 +88,7 @@ $interval = $creation_date->diff($current_date);
 
             <?php foreach ($books as $book) { ?>
                 <div class="bookLine">
-                    <img class="book_img" src="<?= $book->getImg() ?>" />
+                    <img class="user_book_img" src="<?= $book->getImg() ?>" />
                     <div class="title"><?= $book->getTitle() ?></div>
                     <div class="title"><?= $book->getName() ?></div>
                     <div class="title"><?= $book->getDescription() ?></div>
@@ -102,3 +114,10 @@ $interval = $creation_date->diff($current_date);
 </div>
 </div>
 </div>
+<script>
+    // Ajouter un événement au clic sur le lien
+    document.getElementById('uploadLink').addEventListener('click', function(e) {
+        e.preventDefault(); // Empêche le comportement par défaut du lien
+        document.getElementById('fileInput').click(); // Simule un clic sur le champ de fichier
+    });
+</script>

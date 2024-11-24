@@ -15,16 +15,19 @@
             <p id="book_page_description"><?= $book->getDescription() ?></p>
 
             <p class="book_page_text">PROPRIÉTAIRE</p>
-            <div class="user_profil">
+            <a href="index.php?action=publicAccount&id=<?= $book->getUserId() ?>">
+                <div class="user_profil">
 
-                <?php if ($book->getUserPhoto() != ""): ?>
-                    <img class="user_profil_img" src=<?= $book->getUserPhoto() ?> />
-                <?php else: ?>
-                    <img class="user_profil_img" src="img/blank-profile-picture.png" />
-                <?php endif; ?>
-                <p><?= $book->getNickname() ?></p>
+                    <?php if ($book->getUserPhoto() != ""): ?>
+                        <img class="user_profil_img" src=<?= $book->getUserPhoto() ?> />
+                    <?php else: ?>
+                        <img class="user_profil_img" src="img/blank-profile-picture.png" />
+                    <?php endif; ?>
+                    <p><?= $book->getNickname() ?></p>
 
-            </div>
+                </div>
+            </a>
+
             <a href="" class="cta">Envoyer un message</a>
 
         </div>

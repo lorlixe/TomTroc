@@ -54,4 +54,12 @@ class UserManager extends AbstractEntityManager
             'id' => $user->getId(),
         ]);
     }
+    public function modifyUserPhoto(User $user): void
+    {
+        $sql = "UPDATE user SET user_photo =:user_photo where id =:id";
+        $this->db->query($sql, [
+            'id' => $user->getId(),
+            'user_photo' => $user->getUserPhoto(),
+        ]);
+    }
 }

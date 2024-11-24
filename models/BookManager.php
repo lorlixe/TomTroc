@@ -50,7 +50,9 @@ class BookManager extends AbstractEntityManager
         book_library_relation.library_id, 
         library.user_id, 
         user.nickname,
-        user.user_photo 
+        user.user_photo,
+        user.id 
+
     FROM 
         book 
     JOIN 

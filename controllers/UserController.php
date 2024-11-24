@@ -12,13 +12,16 @@ class UserController
      * Vérifie que l'utilisateur est connecté.
      * @return void
      */
-    private function checkIfUserIsConnected(): void
+    public function checkIfUserIsConnected(): void
     {
         // On vérifie que l'utilisateur est connecté.
         if (!isset($_SESSION['user'])) {
             Utils::redirect("signUp");
         }
     }
+
+
+
 
     /**
      * Affichage du formulaire de connexion.
@@ -72,7 +75,7 @@ class UserController
         $_SESSION['user'] = $user;
         $_SESSION['idUser'] = $user->getId();
 
-        // On redirige vers la page d'administration.
+        // On redirige vers la page home.
         Utils::redirect("home");
     }
 
@@ -220,7 +223,7 @@ class UserController
 
                 // Déplace le fichier depuis le dossier temporaire vers le dossier de destination
                 if (move_uploaded_file($_FILES['image']['tmp_name'], $cheminComplet)) {
-                    echo "Image téléchargée avec succès ";
+                    // echo "Image téléchargée avec succès ";
                 } else {
                     echo "Erreur lors du téléchargement de l'image.";
                 }
@@ -229,11 +232,7 @@ class UserController
                 echo "Seules les images JPEG, PNG et GIF sont autorisées.";
             }
         }
-        // else {
-        //     $cheminComplet = "img/livre_sans_img.jpg";
-        // }
 
-        // On vérifie que les données sont valides.
         if (empty($title) || empty($description) || empty($statut) || empty($name)) {
             throw new Exception("Tous les champs sont obligatoires");
         }
@@ -269,9 +268,6 @@ class UserController
         }
 
 
-        // On redirige vers la page user.
-        // $view = new View("myAccount");
-        // $view->render("myAccount", ['user' => $user]);;
         $this->userAccount();
     }
 
@@ -303,22 +299,78 @@ class UserController
         // On récupère les données du formulaire.
         $UserManager = new UserManager;
 
-        $id = $UserManager->getUserById($_SESSION['idUser']);
-
-
+        $user = $UserManager->getUserById($_SESSION['idUser']);
         $email = Utils::request("email");
-        $password = Utils::request("password");
+        $password = password_hash(Utils::request("password"), PASSWORD_DEFAULT);
         $nickname = Utils::request("nickname");
+        $user->setNickname($nickname);
+        $user->setPassword($password);
+        $user->setEmail($email);
+        $UserManager->modifyUser($user);
 
-        $user = new User([
-            'id' => $id,
-            'email' => $email,
-            'password' => password_hash($password, PASSWORD_DEFAULT),
-            'nickname' => $nickname,
-        ]);
-        $updateUser = $UserManager->modifyUser($user);
 
-        $view = new View("User");
-        $view->render("home", ['user' => $updateUser]);
+        $this->userAccount();
+    }
+
+    public function updateUserImg()
+    {
+        $this->checkIfUserIsConnected();
+
+        // Dossier de destination pour les images téléchargées
+        $dossierDestination = "img/";
+
+
+        // Vérifie si le dossier de destination existe, sinon le créer
+        if (!is_dir($dossierDestination)) {
+            mkdir($dossierDestination, 0777, true);
+        }
+
+
+        // Vérifie si un fichier a été envoyé et si le téléchargement a réussi
+        if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+            // Récupère les informations du fichier
+            $nomFichier = str_replace(' ', '_', basename($_FILES['image']['name']));
+            $tailleFichier = $_FILES['image']['size'];
+            $typeFichier = mime_content_type($_FILES['image']['tmp_name']);
+
+            // Limite les types de fichiers autorisés (uniquement images)
+            $typesAutorises = ['image/jpeg', 'image/png', 'image/gif'];
+
+            if (in_array($typeFichier, $typesAutorises)) {
+                // Définit le chemin complet pour enregistrer l'image
+                $cheminComplet = $dossierDestination . $nomFichier;
+
+                // Déplace le fichier depuis le dossier temporaire vers le dossier de destination
+                if (move_uploaded_file($_FILES['image']['tmp_name'], $cheminComplet)) {
+                    // echo "Image téléchargée avec succès ";
+                } else {
+                    echo "Erreur lors du téléchargement de l'image.";
+                }
+                $user_photo = $cheminComplet;
+            } else {
+                echo "Seules les images JPEG, PNG et GIF sont autorisées.";
+            }
+        }
+
+        $UserManager = new UserManager;
+        $user = $UserManager->getUserById($_SESSION['idUser']);
+        $user->setUserPhoto($user_photo);
+        $UserManager->modifyUserPhoto($user);
+        $this->userAccount();
+    }
+
+
+    public function userPublicAccount()
+    {
+        $id = Utils::request("id");
+
+        // On redirige vers la page user.
+        $view = new View("publicAccount");
+
+        $UserManager = new UserManager;
+        $user = $UserManager->getUserById($id);
+        $bookManager = new BookManager;
+        $book = $bookManager->getBooksByUserId($id);
+        $view->render("publicAccount", ['user' => $user, 'books' => $book]);;
     }
 }

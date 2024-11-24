@@ -23,8 +23,11 @@ try {
             $bookController = new BookController();
             $bookController->BookById();
             break;
+        case 'publicAccount':
+            $userController = new userController();
+            $userController->userPublicAccount();
+            break;
             // Section admin & connexion. 
-
         case 'signIn':
             $userController = new userController();
             $userController->displaysignInForm();
@@ -46,8 +49,6 @@ try {
             $userController = new userController();
             $userController->updateUserInfo();
             break;
-
-
         case 'disconnectUser':
             $userController = new userController();
             $userController->disconnectUser();
@@ -56,7 +57,10 @@ try {
             $userController = new userController();
             $userController->userAccount();
             break;
-
+        case 'updateUserImg':
+            $userController = new userController();
+            $userController->updateUserImg();
+            break;
         case 'editBook':
             $userController = new userController();
             $userController->updateOrCreatBook();
@@ -73,7 +77,16 @@ try {
             $bookController = new BookController();
             $bookController->newBookForm();
             break;
+            ///////////////////message/////////////
 
+        case 'allMessage';
+            $messageController = new MessageController();
+            $messageController->allMessage();
+            break;
+        case 'conversation';
+            $messageController = new MessageController();
+            $messageController->conversation();
+            break;
 
         default:
             throw new Exception("La page demandée n'existe pas.");

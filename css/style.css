@@ -13,12 +13,7 @@
   --backgroundColor: #faf9f7;
   --headerColor: #f5f3ef;
   --ariane: #a6a6a6;
-  /* --headerPaleColor: #efe1ba;
-  --titleColor: #000000;
-  --text: #000000;
-  --dateColor: #3f56a4;
-  --quoteColor: #c5cbe4;
-  --commentPaleColor: #99a140; */
+  --backgroundCard: #ffffff;
   --ctaColor: #00ac66;
 }
 
@@ -46,6 +41,18 @@ nav {
   font-size: 15px;
   justify-content: center;
   padding: 1em 0;
+}
+#error {
+  text-align: center;
+  margin: 4em;
+}
+
+#error-description {
+  margin: 4em;
+}
+#error-description .link {
+  padding: 4em;
+  color: #00ac66;
 }
 
 #menu {
@@ -340,7 +347,7 @@ footer p {
   border-top: 1px solid #a6a6a6;
   padding: 0;
   width: 30px;
-  margin: 32px 0;
+  margin: 2 0;
 }
 
 .book_page p {
@@ -418,7 +425,7 @@ footer p {
   height: 50px;
   border-radius: 6px;
   border: none;
-  background: #ffffff;
+  background-color: #edf2f6;
 }
 
 .labelField {
@@ -451,13 +458,16 @@ label {
   text-align: left;
   margin: 2em 8%;
 }
+.user-btn {
+  margin: 2em 8%;
+}
 .user-detail {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 .user-description {
-  background-color: var(--backgroundColor);
+  background-color: var(--backgroundCard);
   padding: 0% 10%;
   border-radius: 30px;
   margin-right: 5%;
@@ -471,6 +481,7 @@ label {
   color: #a6a6a6;
   font-size: 1.5em;
   margin: 1em 0;
+  text-align: center;
 }
 .display-user-information-section #member-book-number {
   font-size: 1.2em;
@@ -482,7 +493,6 @@ label {
   background-color: #f5f3ef;
   color: #00ac66;
   border: solid 1px;
-  margin: 17%;
 }
 .display-user-information-section h3 {
   font-size: 1em;
@@ -509,7 +519,7 @@ label {
 }
 
 .user-information {
-  background-color: var(--backgroundColor);
+  background-color: var(--backgroundCard);
   padding: 0 5%;
   width: 40%;
   border-radius: 30px;
@@ -525,7 +535,7 @@ label {
 }
 
 .user-detail input {
-  width: 30em;
+  max-width: 30em;
 }
 /* Style tableau */
 .user-book {
@@ -552,23 +562,30 @@ label {
   text-overflow: ellipsis;
 }
 
+.bookLine:first-child {
+  border-radius: 30px 30px 0% 0%;
+}
+.bookLine:last-child {
+  border-radius: 0% 0% 30px 30px;
+}
+
 .bookLine:nth-child(odd) {
   background-color: #edf2f6;
 }
 
 .bookLine:nth-child(even) {
-  background-color: var(--backgroundColor);
+  background-color: var(--backgroundCard);
 }
 
 /* Style de l’en-tête du tableau */
 .bookLine.header {
   font-weight: bold;
   font-size: 0.5em;
-  background-color: var(--backgroundColor);
+  background-color: var(--backgroundCard);
 }
 
 /* Style de chaque colonne */
-.book_img {
+.user_book_img {
   width: 70px;
   height: 70px;
   border-radius: 5px;
@@ -615,4 +632,210 @@ label {
 .link.supp {
   text-decoration: underline;
   color: #d9534f;
+}
+
+.add-book h1 {
+  margin: 2em 0;
+}
+.add-page-info {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--backgroundColor);
+  padding: 59px 85px 80px 85px;
+}
+
+/* page public account */
+
+#pulic-account {
+  display: flex;
+  flex-direction: row;
+  background-color: #faf9f7;
+}
+
+#pulic-account .user-detail {
+  margin: 5%;
+  width: 50%;
+  background-color: var(--backgroundCard);
+  border-radius: 30px;
+}
+
+#pulic-account hr {
+  margin: 5%;
+}
+
+.public-user-description {
+  padding: 0% 10%;
+  border-radius: 30px;
+  width: 90%;
+}
+#pulic-account .user-book {
+  width: 80%;
+  margin: 5% 5% 5% 0%;
+
+  border-radius: 30px;
+}
+
+.bookLine-pulic-account {
+  width: 100%;
+  grid-template-columns: 2.7fr 4.5fr 3fr 3fr;
+}
+
+.public-user-article {
+  margin: 0;
+}
+/* message */
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 30%;
+  background-color: #fff;
+  border-right: 1px solid #ddd;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin: 0 0 20px;
+}
+
+.contact-list {
+  overflow-y: auto;
+  height: calc(100% - 40px);
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.contact-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-name {
+  font-weight: bold;
+  margin: 0;
+}
+
+.contact-preview {
+  font-size: 0.9em;
+  color: #888;
+  margin: 5px 0 0;
+}
+
+.contact-time {
+  font-size: 0.8em;
+  color: #888;
+}
+
+/* Chat area */
+.chat-area {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fdfdfd;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.chat-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.chat-name {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 15px;
+  align-items: flex-end;
+}
+
+.message-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.message-content {
+  max-width: 60%;
+  background-color: #e8e8e8;
+  border-radius: 10px;
+  padding: 10px 15px;
+  position: relative;
+  font-size: 0.9em;
+}
+
+.message-content .message-time {
+  display: block;
+  font-size: 0.8em;
+  color: #aaa;
+  margin-top: 5px;
+  text-align: right;
+}
+
+.message.sent .message-content {
+  margin-left: auto;
+  background-color: #d1e7ff;
+}
+
+.chat-input {
+  display: flex;
+  padding: 20px;
+  border-top: 1px solid #ddd;
+  background-color: #fff;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.chat-input button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.chat-input button:hover {
+  background-color: #218838;
 }
