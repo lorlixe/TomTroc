@@ -4,35 +4,6 @@ class MessageManager extends AbstractEntityManager
 {
 
 
-    // public function getMessagesByConversation(int $user1_id, int $user2_id)
-    // {
-    //     $conversation_id = $user1_id < $user2_id
-    //         ? $user1_id . '_' . $user2_id
-    //         : $user2_id . '_' . $user1_id;
-
-    //     $sql = "SELECT message.*, 
-    //     user.nickname,
-    //     user.user_photo,
-    //     FROM messages    
-    //     JOIN user ON message.sender_id = user.nickname
-    //     JOIN user ON message.receiver_id = user.nickname
-
-    //     JOIN user ON message.receiver_id = user.user_photo,
-    //     JOIN user ON user.user_photo = user.user_photo,
-    //         WHERE conversation_id = :conversation_id
-    //         ORDER BY sent_at ASC";
-
-    //     $result = $this->db->query($sql);
-
-
-    //     $messages = [];
-    //     while ($message = $result->fetch(PDO::FETCH_ASSOC)) {
-    //         $messages[] = new Message($message);
-    //     }
-
-    //     return $messages;
-    // }
-
     public function getMessagesByConversation(int $user1_id, int $user2_id)
     {
         // Générer un identifiant de conversation unique
@@ -113,11 +84,52 @@ class MessageManager extends AbstractEntityManager
 
     public function setMessage(Message $message): void
     {
-        $sql = "INSERT INTO message (sender_id, receiver_id, content) VALUES ( :sender_id, :receiver_id, :content)";
+        $sql = "INSERT INTO messages (sender_id, receiver_id, content, is_read) VALUES ( :sender_id, :receiver_id, :content, :is_read)";
         $this->db->query($sql, [
             'sender_id' => $message->getSenderId(),
             'receiver_id' => $message->getReceiverId(),
             'content' => $message->getContent(),
+            'is_read' => $message->getIsRead()
         ]);
+    }
+
+    public function setConversation(int $sender_id, int $receiver_id)
+    {
+        $sql = "INSERT INTO messages (sender_id, receiver_id) VALUES ( :sender_id, :receiver_id)";
+        $this->db->query($sql, [
+            'sender_id' =>  $sender_id,
+            'receiver_id' => $receiver_id,
+        ]);
+    }
+    // public function setReadMessage(int $sender_id, int $receiver_id)
+    // {
+    //     $sql = "UPDATE  messages SET is_read = :is_read WHERE sender_id = :sender_id AND receiver_id, :receiver_id";
+    //     $this->db->query($sql, [
+    //         'is_read' => 1,
+    //         'sender_id' =>  $sender_id,
+    //         'receiver_id' => $receiver_id,
+    //     ]);
+    // }
+    public function messagesAsRead(int $sender_id, int $userId): void
+    {
+        try {
+            $sql = "
+            UPDATE 
+                messages 
+            SET 
+                is_read = :is_read
+            WHERE 
+                sender_id = :sender_id 
+                AND 
+                receiver_id = :receiver_id
+        ";
+            $this->db->query($sql, [
+                'is_read' => 1,
+                'sender_id' => $sender_id,
+                'receiver_id' => $userId
+            ]);
+        } catch (PDOException $e) {
+            echo "Error : " . $e->getMessage();
+        }
     }
 }

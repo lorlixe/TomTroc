@@ -14,6 +14,7 @@ class Message extends AbstractEntity
     private string $sender_photo = "";
     private string $receiver_nickname = "";
     private string $receiver_photo = "";
+
     public function setSenderId(int $sender_id): void
     {
         $this->sender_id = $sender_id;

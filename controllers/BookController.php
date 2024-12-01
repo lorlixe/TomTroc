@@ -7,6 +7,7 @@ class BookController
 
         $bookManager = new bookManager();
         $books = $bookManager->getAllBook();
+
         $view = new View("livres");
         $view->render("allBooks", ['books' => $books]);
     }
@@ -14,6 +15,8 @@ class BookController
     {
         $bookManager = new bookManager();
         $lastBooks = $bookManager->getLastBook();
+        $messageController = new MessageController;
+        $messageController->unreadBook();
         $view = new View("Accueil");
         $view->render("home", ['lastBooks' => $lastBooks]);
     }
@@ -47,5 +50,17 @@ class BookController
     {
         $view = new View("newBook");
         $view->render("newBook");
+    }
+    public function searchBooks(): void
+    {
+        $title = Utils::request("title");
+
+        $bookManager = new bookManager();
+        $book = $bookManager->getBookByTitle($title);
+        if (!$book) {
+            throw new Exception("Le livre demandé n'existe pas.");
+        }
+        $view = new View("livre");
+        $view->render("allBooks", ['books' => $book]);
     }
 }

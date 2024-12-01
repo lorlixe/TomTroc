@@ -32,8 +32,9 @@ $interval = $creation_date->diff($current_date);
                     <div id="member-book-number"> <img src="img/icon_livre.png" /> <?= count($books) ?> Livres</div>
                 </div>
             </div>
-
-            <button class="cta cta-user">Écrire un message</button>
+            <?php if (isset($_SESSION['user'])): ?>
+                <a href="index.php?action=newConversation&receiver_id=<?= $user->getId() ?>" class="cta cta-user">Écrire un message</a>
+            <?php endif; ?>
 
         </div>
 

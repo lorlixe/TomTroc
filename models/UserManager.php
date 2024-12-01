@@ -35,6 +35,7 @@ class UserManager extends AbstractEntityManager
 
     public function setUser(User $user): void
     {
+
         $sql = "INSERT INTO user (email, password, nickname, user_photo, creation_date) VALUES ( :email, :password, :nickname, :user_photo, :creation_date)";
         $this->db->query($sql, [
             'email' => $user->getEmail(),
@@ -42,6 +43,15 @@ class UserManager extends AbstractEntityManager
             'nickname' => $user->getNickname(),
             'user_photo' => $user->getUserPhoto(),
             'creation_date' => $user->getCreationDate()
+        ]);
+
+        // Création d'une bibliothèque
+        $userId = $this->db->getPDO()->lastInsertId();
+
+        // liée une bibliothèque pour cet utilisateur
+        $insertLibraryQuery = "INSERT INTO library (user_id) VALUES (:user_id)";
+        $this->db->query($insertLibraryQuery, [
+            ':user_id' => $userId,
         ]);
     }
     public function modifyUser(User $user): void

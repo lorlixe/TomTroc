@@ -27,6 +27,10 @@ try {
             $userController = new userController();
             $userController->userPublicAccount();
             break;
+        case 'searchBooks':
+            $bookController = new BookController();
+            $bookController->searchBooks();
+            break;
             // Section admin & connexion. 
         case 'signIn':
             $userController = new userController();
@@ -88,6 +92,14 @@ try {
             $messageController->conversation();
             break;
 
+        case 'newConversation';
+            $messageController = new MessageController();
+            $messageController->creatConversation();
+            break;
+        case 'newMessage';
+            $messageController = new MessageController();
+            $messageController->creatMessage();
+            break;
         default:
             throw new Exception("La page demandée n'existe pas.");
     }

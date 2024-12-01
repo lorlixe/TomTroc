@@ -839,3 +839,14 @@ label {
 .chat-input button:hover {
   background-color: #218838;
 }
+
+.notification-message {
+  background-color: #d9534f;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 15px;
+}

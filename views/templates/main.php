@@ -37,6 +37,9 @@
                     // Si on est connecté, on affiche les boutons suivant, sinon, on affiche le bouton de connexion : 
                     if (isset($_SESSION['user'])) {
                         echo '<li><img src="img/IconMessagerie.png" alt=""><a href="index.php?action=conversation"> Messagerie</a></li>';
+                        if (isset($_SESSION['undreadBook'])) {
+                            echo '<span class="notification-message ">' . $_SESSION['undreadBook'] . '</span>';
+                        }
                         echo '<li><img src="img/Icon_mon_compte.png" alt=""><a href="index.php?action=userAccount">Mon compte</a></li>';
                         echo '<li><a href="index.php?action=disconnectUser">Déconnexion</a></li>';
                     } else {

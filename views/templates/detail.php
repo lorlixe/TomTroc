@@ -27,8 +27,10 @@
 
                 </div>
             </a>
+            <?php if (isset($_SESSION['user'])): ?>
+                <a href="index.php?action=newConversation&receiver_id=<?= $book->getUserId() ?>" class="cta">Envoyer un message</a>
+            <?php endif; ?>
 
-            <a href="" class="cta">Envoyer un message</a>
 
         </div>
 

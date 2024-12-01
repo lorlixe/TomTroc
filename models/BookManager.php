@@ -70,8 +70,6 @@ class BookManager extends AbstractEntityManager
         if ($book) {
             return new Book($book);
         }
-
-
         return null;
     }
 
@@ -159,5 +157,38 @@ class BookManager extends AbstractEntityManager
             'statut' => $book->getStatut(),
         ]);
         $this->db->query($sql2, ['user_id' => $user_id]);
+    }
+
+    public function getBookByTitle(string $title): array
+    {
+        $sql = "SELECT 
+        book.*, 
+        author.name,
+        book_library_relation.library_id, 
+        library.user_id, 
+        user.nickname,
+        user.user_photo,
+        user.id 
+
+    FROM 
+        book 
+    JOIN 
+        author ON book.author_id = author.id
+    JOIN 
+        book_library_relation ON book.id = book_library_relation.book_id
+    JOIN 
+        library ON book_library_relation.library_id = library.id
+    JOIN 
+        user ON library.user_id = user.id
+    WHERE 
+        book.title = :title";
+        $result = $this->db->query($sql, ['title' => $title]);
+        $books = [];
+
+        while ($book = $result->fetch()) {
+            $books[] = new Book($book);
+        }
+
+        return $books;
     }
 }

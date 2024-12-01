@@ -5,7 +5,7 @@
             <div class="search-input-wrapper">
                 <label for="search-value" class="visually-hidden">Rechercher un livre</label>
                 <img src="./img/search-icon.svg" alt="Icône de recherche">
-                <input type="text" id="search-value" name="search-value" placeholder="Rechercher un livre">
+                <input type="text" id="search-value" name="title" placeholder="Rechercher un livre">
             </div>
             <input type="submit" value="Valider" class="all_books_page_submit_button" />
         </form>
