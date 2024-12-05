@@ -3,7 +3,7 @@
         <div id="banner-content">
             <h1>Rejoignez nos lecteurs passionnés </h1>
             <p id="banner-description">Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres. </p>
-            <button class="cta">Découvrir</button>
+            <a href="index.php?action=all_books" class="cta">Découvrir</a>
         </div>
         <img id="banner-img" src="img/banner.jpeg" alt="bannière">
     </div>

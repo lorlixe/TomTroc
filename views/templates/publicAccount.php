@@ -50,13 +50,17 @@ $interval = $creation_date->diff($current_date);
             </div>
 
             <?php foreach ($books as $book) { ?>
+
                 <div class="bookLine bookLine-pulic-account">
-                    <img class="user_book_img" src="<?= $book->getImg() ?>" />
-                    <div class="title"><?= $book->getTitle() ?></div>
+
+                    <a href="index.php?action=detail_books&id=<?= $book->getId() ?>">
+                        <img class="user_book_img" src="<?= $book->getImg() ?>" />
+                    </a>
+                    <a href="index.php?action=detail_books&id=<?= $book->getId() ?>">
+                        <div class="title"><?= $book->getTitle() ?></div>
+                    </a>
                     <div class="title"><?= $book->getName() ?></div>
                     <div class="title"><?= $book->getDescription() ?></div>
-
-
                 </div>
             <?php } ?>
         </div>

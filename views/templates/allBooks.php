@@ -12,7 +12,7 @@
 
     </div>
     <div id="books">
-        <?php foreach ($books as $book) { ?>
+        <?php foreach (array_reverse($books) as $book) { ?>
             <a href="index.php?action=detail_books&id=<?= $book->getId() ?>">
                 <article class="book_card">
                     <div class="card_img">
