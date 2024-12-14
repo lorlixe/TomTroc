@@ -31,8 +31,12 @@
                                     <?php if ($undreadBook > 0): ?>
                                         <span class="notification-message"><?= $undreadBook ?></span>
                                     <?php endif; ?>
+                                    <?php if ($lastMessage->getSenderPhoto() != ""): ?>
+                                        <img class="user_profil_img" src=<?= $lastMessage->getSenderPhoto() ?> />
+                                    <?php else: ?>
+                                        <img class="user_profil_img" src="img/blank-profile-picture.png" />
+                                    <?php endif; ?>
 
-                                    <img src="<?= htmlspecialchars($lastMessage->getSenderPhoto()) ?>" alt="Avatar" class="contact-avatar">
                                     <div class="contact-info">
                                         <p class="contact-name"><?= htmlspecialchars($lastMessage->getSenderNickname()) ?></p>
                                         <p class="contact-preview"><?= htmlspecialchars($lastMessage->getContent()) ?></p>
@@ -41,7 +45,12 @@
                                 <?php else: ?>
                                     <?php if ($undreadBook > 0): ?>
                                         <span class="notification-message"><?= $undreadBook ?></span>
-                                    <?php endif; ?> <img src="<?= htmlspecialchars($lastMessage->getReceiverPhoto()) ?>" alt="Avatar" class="contact-avatar">
+                                    <?php endif; ?>
+                                    <?php if ($lastMessage->getReceiverPhoto() != ""): ?>
+                                        <img class="user_profil_img" src=<?= $lastMessage->getReceiverPhoto() ?> />
+                                    <?php else: ?>
+                                        <img class="user_profil_img" src="img/blank-profile-picture.png" />
+                                    <?php endif; ?>
                                     <div class="contact-info">
                                         <p class="contact-name"><?= htmlspecialchars($lastMessage->getReceiverNickname()) ?></p>
                                         <p class="contact-preview"><?= htmlspecialchars($lastMessage->getContent()) ?></p>
@@ -60,15 +69,23 @@
 
         <div class="chat-area">
             <div class="chat-header">
-                <?php if ($selectConversationLastMessages->getSenderId() != $user->getId()): ?>
-                    <img src="<?= htmlspecialchars($selectConversationLastMessages->getSenderPhoto()) ?>" alt="Avatar" class="contact-avatar">
+                <?php if (isset($selectConversationLastMessages) && $selectConversationLastMessages->getSenderId() != $user->getId()): ?>
+                    <?php if ($selectConversationLastMessages->getSenderPhoto() != ""): ?>
+                        <img src="<?= htmlspecialchars($selectConversationLastMessages->getSenderPhoto()) ?>" alt="Avatar" class="contact-avatar">
+                    <?php else: ?>
+                        <img class="user_profil_img" src="img/blank-profile-picture.png" />
+                    <?php endif; ?>
                     <a href="index.php?action=publicAccount&id=<?= $selectConversationLastMessages->getSenderId() ?>">
 
                         <p class="chat-name"><?= htmlspecialchars($selectConversationLastMessages->getSenderNickname()) ?></p>
                     </a>
 
                 <?php else: ?>
-                    <img src="<?= htmlspecialchars($selectConversationLastMessages->getReceiverPhoto()) ?>" alt="Avatar" class="contact-avatar">
+                    <?php if ($selectConversationLastMessages->getReceiverPhoto() != ""): ?>
+                        <img src="<?= htmlspecialchars($selectConversationLastMessages->getReceiverPhoto()) ?>" alt="Avatar" class="contact-avatar">
+                    <?php else: ?>
+                        <img class="user_profil_img" src="img/blank-profile-picture.png" />
+                    <?php endif; ?>
                     <a href="index.php?action=publicAccount&id=<?= $selectConversationLastMessages->getReceiverId() ?>">
 
                         <p class="chat-name"><?= htmlspecialchars($selectConversationLastMessages->getReceiverNickname()) ?></p>
@@ -115,7 +132,7 @@
             }
             ?>
 
-            <form action="index.php?action=newMessage&id=<?= $receiver ?>" method="post" enctype="multipart/form-data">
+            <form action="index.php?action=newMessage&id=<?= htmlspecialchars($receiver)  ?>" method="post" enctype="multipart/form-data">
                 <div class="chat-input">
                     <input type="text" name="content" placeholder="Tapez votre message ici">
                     <button>Envoyer</button>

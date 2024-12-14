@@ -87,4 +87,49 @@ class Utils
     {
         return $_REQUEST[$variableName] ?? $defaultValue;
     }
+    public static function checkUserOwnership(int $id): void
+    {
+        $userId = $_SESSION['idUser'];
+        $BookManager = new BookManager;
+        $userBooks =  $BookManager->getBooksByUserId($userId);
+        $bookFound = false;
+
+        // On vérifier que le livre fait partie de la liste de livre  de l'utilisateur
+        foreach ($userBooks as $book) {
+            $bookId = $book->getId();
+
+            // Vérifier si l'ID correspond
+            if ($bookId === $id) {
+                $bookFound = true;
+                break;
+            }
+        };
+        if ($bookFound === false) {
+            throw new Exception("Vous n'êtes pas autorisé a effectuer cette");
+        }
+    }
+    public static function checkUseConversation($convertionId): void
+    {
+        if ($convertionId) {
+            $userId = $_SESSION['idUser'];
+            //  Séparer la chaîne par le délimiteur "_"
+            $segments = explode("_", $convertionId);
+
+            // Convertir les segments en entiers
+            $user1 = intval($segments[0]);
+            $user2 = intval($segments[1]);
+
+
+            $bookFound = false;
+
+            // On vérifier que l'utilisateur fait partie de la conversation
+            if ($userId == $user2 || $userId == $user1) {
+                $bookFound = true;
+            }
+
+            if ($bookFound === false) {
+                throw new Exception("Vous n'êtes pas autorisé a effectuer cette");
+            }
+        }
+    }
 }

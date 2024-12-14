@@ -33,14 +33,17 @@ h2 {
   font-weight: 400;
   text-align: center;
 }
+/*////////////////////// nav bar //////////////////*/
+header {
+  padding: 10px 20px;
+}
 
 nav {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-top: 2em;
-  font-size: 15px;
-  justify-content: center;
-  padding: 1em 0;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 #error {
   text-align: center;
@@ -64,7 +67,8 @@ nav {
 }
 
 #logo {
-  height: 3, 5em;
+  height: 50px;
+  width: auto;
 }
 .ariane {
   color: var(--ariane);
@@ -79,7 +83,7 @@ nav {
   font-weight: 300;
 }
 
-.sous_menu {
+/* .sous_menu {
   display: flex;
   justify-content: space-between;
 }
@@ -93,6 +97,47 @@ nav {
   margin-left: 5px;
 
   color: var(--text);
+} */
+.sous_menu {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Espacement entre les éléments */
+}
+
+.sous_menu li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sous_menu li a {
+  display: flex;
+  align-items: center;
+}
+
+.sous_menu a {
+  text-decoration: none;
+  font-size: 16px;
+}
+.sous_menu img {
+  width: 0.7em;
+  height: 0.7em;
+  margin-right: 8px;
+}
+
+.sous_menu a:hover {
+  color: var(--ctaColor); /* Change la couleur au survol */
+}
+
+.notification-message {
+  background-color: #000000;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 40%;
+  text-align: center;
 }
 
 a:hover {
@@ -141,6 +186,7 @@ a:hover {
   padding-left: 2em;
   max-width: fit-content;
 }
+/* home */
 .bookList {
   background-color: var(--backgroundColor);
   padding: 5em;
@@ -150,23 +196,35 @@ a:hover {
 }
 a {
   text-decoration: none;
-  color: #292929;
+  color: #000;
 }
 a:visited {
   color: inherit;
 }
+.cta:visited {
+  color: white;
+}
 
 .book_card {
-  width: 260px;
-  height: 24em;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: inherit;
   display: flex;
   flex-direction: column;
+  height: 100%;
+}
+.book_card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .book_card h3 {
-  font: 16px sans-serif;
+  font: 1em sans-serif;
   font-weight: 400;
-  padding: 1em 0;
+  padding: 0.5em 0;
   text-align: left;
 }
 .book_card p {
@@ -178,20 +236,27 @@ a:visited {
   font-style: oblique;
   padding-top: 2em;
 }
+.saler p {
+  font-size: 14px;
+  font-style: italic;
+  color: #555;
+}
 .card_img {
   width: 100%;
   height: 60%;
+  overflow: hidden;
 }
 .book_img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 .book_description {
-  background-color: white;
-  width: 100%;
-  height: 40%;
-  padding-left: 5%;
-  padding-bottom: 5%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
 }
 
 #tuto_section {
@@ -200,6 +265,12 @@ a:visited {
   flex-direction: column;
   align-items: center;
   padding: 5em;
+}
+.book_info p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #888;
+  margin-bottom: 10px;
 }
 
 #tudo_description p {
@@ -269,23 +340,37 @@ footer p {
 
 /* page qui affiche tous les livres */
 #books {
-  padding: 5em;
-  width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 colonnes de taille égale */
-  gap: 10px; /* Écart égal entre les colonnes et les lignes */
-  grid-auto-rows: minmax(50px, auto); /* Hauteur des lignes minimale de 50px */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(260px, 1fr)
+  ); /* Colonnes responsives */
+  grid-auto-rows: 400px; /* Chaque ligne aura une hauteur fixe de 400px */
+  gap: 20px; /* Espacement entre les lignes et les colonnes */
+}
+
+#last_books {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-auto-rows: 400px;
+  padding: 3% 0;
+  gap: 20px;
+  width: 100%;
+  margin: 0 auto;
 }
 #all_books_page {
   background-color: var(--backgroundColor);
-  padding: 130px 263px 80px 263px;
+  padding: 3em 8em;
+}
+#all_books_page_header form {
+  width: 19%;
 }
 
 .all_books_page_header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 72px;
   align-items: center;
+  margin-bottom: 40px;
 }
 
 .our-all_books_page_header h1 {
@@ -303,6 +388,8 @@ footer p {
   background-color: #fff;
   padding: 16px 13px;
   border-radius: 6px;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .search-input-wrapper input {
@@ -365,6 +452,11 @@ footer p {
   background-color: var(--backgroundColor);
   padding: 59px 85px 80px 85px;
 }
+.book_page_info .cta {
+  max-width: 100%;
+  text-align: center;
+  margin-top: 5em;
+}
 #book_page_title {
   text-align: left;
 }
@@ -385,7 +477,12 @@ footer p {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 15px 0;
+  padding: 15px;
+  background-color: white;
+  border-radius: 114px;
+  max-width: 43%;
+  margin: 1em 0;
+  box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.1);
 }
 .user_profil_img {
   width: 3em;
@@ -394,6 +491,65 @@ footer p {
 }
 .book_page_text {
   font-weight: bold;
+}
+/* /////////////////// edit_book ///////////////*/
+.edit_book_title h1 {
+  text-align: left;
+}
+.edit_book_title {
+  margin: 2em 18em;
+}
+.edit .ariane {
+  padding: 0;
+}
+
+.form_edit_book {
+  display: flex;
+  flex-direction: row;
+  max-width: 900px;
+  margin: 0 18em 5% 18em;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+.edit_book {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.edit_book form {
+  width: 95%;
+}
+
+.edit_book_img {
+  max-width: 400px;
+  height: auto;
+  object-fit: cover;
+}
+.labelField_edit_book {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.edit_book_img_section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.edit_book_info .cta {
+  width: 50%;
+  max-width: 100%;
+}
+
+/* Informations */
+.edit_book_info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 0px 0px 50px 74px;
 }
 
 /* !!!!!!!!!!!!!! connexion !!!!!!!!!!!!!!!!!!!*/
@@ -420,6 +576,10 @@ footer p {
   align-items: center;
 }
 
+.formGrid .labelField {
+  width: 30em;
+}
+
 .fieldForm {
   width: 322px;
   height: 50px;
@@ -441,7 +601,22 @@ footer p {
 }
 
 label {
-  padding-bottom: 2em;
+  font-weight: bold;
+  color: #555;
+}
+
+.fieldForm {
+  font-size: 14px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+textarea.fieldForm {
+  resize: none;
+  height: 350px;
 }
 
 .connection-form .cta {
@@ -684,6 +859,7 @@ label {
 .public-user-article {
   margin: 0;
 }
+
 /* message */
 
 .container {
@@ -840,7 +1016,7 @@ label {
   background-color: #218838;
 }
 
-.notification-message {
+/* .notification-message {
   background-color: #d9534f;
   color: white;
   padding: 5px;
@@ -849,4 +1025,4 @@ label {
   height: 30px;
   border-radius: 50%;
   margin-right: 15px;
-}
+} */

@@ -53,10 +53,22 @@ class MessageController
         }
         $selectConversationID = Utils::request("id");
 
+
         if (!$selectConversationID) {
             $firstKey = array_key_first($conversation);
             $selectConversation = $conversation[$firstKey] ?? null;
+            //verifier si on a le droit de changer la conversation
+            Utils::checkUseConversation($selectConversationID);
+            if ($selectConversation === null) {
+                $view = new View("Message");
+                $view->render("allMessages", ['conversations' => $conversation, 'user' => $user, 'selectConversation' => [], 'selectConversationLastMessages' => []]);
+            }
         } else {
+            if (!isset($conversation[$selectConversationID])) {
+                throw new Exception("Vous n'êtes pas autorisé a effectuer cette");
+            }
+            //verifier si on a le droit de changer la conversation
+            Utils::checkUseConversation($selectConversationID);
             // Filtrer la conversation avec l'ID sélectionné
             $selectConversation = $conversation[$selectConversationID];
         }

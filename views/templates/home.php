@@ -9,7 +9,7 @@
     </div>
     <div class="bookList">
         <h2>Les derniers livres ajoutés</h2>
-        <div id="books">
+        <div id="last_books">
             <?php foreach ($lastBooks as $book) { ?>
                 <a href="index.php?action=detail_books&id=<?= $book->getId() ?>">
                     <article class="book_card">

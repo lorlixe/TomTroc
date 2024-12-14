@@ -13,23 +13,26 @@
     </div>
     <div id="books">
         <?php foreach (array_reverse($books) as $book) { ?>
-            <a href="index.php?action=detail_books&id=<?= $book->getId() ?>">
-                <article class="book_card">
-                    <div class="card_img">
-                        <img class="book_img" src=<?= $book->getImg() ?> />
-                    </div>
-                    <div class="book_description">
-                        <div class="book_info">
-                            <h3><?= $book->getTitle() ?></h3>
-                            <p><?= $book->getName() ?></p>
+            <div class="grid">
+                <a href="index.php?action=detail_books&id=<?= $book->getId() ?>">
+                    <article class="book_card">
+                        <div class="card_img">
+                            <img class="book_img" src=<?= $book->getImg() ?> />
                         </div>
-                        <div class="saler">
-                            <p>Vendu par :<?= $book->getNickname() ?></p>
+                        <div class="book_description">
+                            <div class="book_info">
+                                <h3><?= $book->getTitle() ?></h3>
+                                <p><?= $book->getName() ?></p>
+                            </div>
+                            <div class="saler">
+                                <p>Vendu par :<?= $book->getNickname() ?></p>
+                            </div>
                         </div>
-                    </div>
 
-                </article>
-            </a>
+                    </article>
+                </a>
+            </div>
+
         <?php } ?>
     </div>
 </div>

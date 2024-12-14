@@ -4,7 +4,6 @@
     </div>
 
     <div class="book_page">
-
         <img class="book_page_img" src=<?= $book->getImg() ?> />
         <div class="book_page_info">
             <h1 id="book_page_title"><?= $book->getTitle() ?></h1>

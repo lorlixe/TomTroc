@@ -69,6 +69,11 @@ try {
             $userController = new userController();
             $userController->updateOrCreatBook();
             break;
+        case 'updateBookImg':
+            $userController = new userController();
+            $userController->updateBookImg();
+            break;
+
         case 'bookForm':
             $bookController = new BookController();
             $bookController->bookForm();

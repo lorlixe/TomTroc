@@ -45,26 +45,26 @@ class BookManager extends AbstractEntityManager
     public function getBookById(int $id): ?Book
     {
         $sql = "SELECT 
-        book.*, 
-        author.name,
-        book_library_relation.library_id, 
-        library.user_id, 
-        user.nickname,
-        user.user_photo,
-        user.id 
-
+    book.*,
+    author.name AS name,
+    book_library_relation.library_id AS relation_library_id, 
+    library.user_id AS library_user_id, 
+    user.nickname,
+    user.user_photo AS user_photo,
+    user.id AS user_id,
+    book.id AS book_id -- Alias explicite pour le livre
     FROM 
         book 
     JOIN 
         author ON book.author_id = author.id
     JOIN 
-        book_library_relation ON book.id = book_library_relation.book_id
+        book_library_relation ON book_library_relation.book_id = book.id
     JOIN 
         library ON book_library_relation.library_id = library.id
     JOIN 
         user ON library.user_id = user.id
     WHERE 
-        book.id = :id";
+    book.id = :id";
         $result = $this->db->query($sql, ['id' => $id]);
         $book = $result->fetch();
         if ($book) {

@@ -15,14 +15,17 @@ class BookController
     {
         $bookManager = new bookManager();
         $lastBooks = $bookManager->getLastBook();
-        $messageController = new MessageController;
-        $messageController->unreadBook();
+        if (isset($_SESSION['user'])) {
+            $messageController = new MessageController;
+            $messageController->unreadBook();
+        }
+
         $view = new View("Accueil");
         $view->render("home", ['lastBooks' => $lastBooks]);
     }
     public function BookById(): void
     {
-        $id = Utils::request("id", -1);
+        $id = Utils::request("id");
 
         $bookManager = new bookManager();
         $book = $bookManager->getBookById($id);
@@ -37,11 +40,15 @@ class BookController
     {
         $id = Utils::request("id", -1);
 
+
+        Utils::checkUserOwnership($id);
+
         $bookManager = new bookManager();
         $book = $bookManager->getBookById($id);
         if (!$book) {
             throw new Exception("Le livre demandé n'existe pas.");
         }
+
         $view = new View("editBook");
         $view->render("editBook", ['book' => $book]);
     }
