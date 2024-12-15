@@ -47,7 +47,8 @@ nav {
 }
 #error {
   text-align: center;
-  margin: 4em;
+  margin-top: 15em;
+  height: 100vh;
 }
 
 #error-description {
@@ -198,6 +199,9 @@ a {
   text-decoration: none;
   color: #000;
 }
+.sign a {
+  text-decoration: underline;
+}
 a:visited {
   color: inherit;
 }
@@ -205,7 +209,19 @@ a:visited {
   color: white;
 }
 
+.tag_statut {
+  background-color: #c56d6d;
+  position: absolute;
+  color: #ffffff;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 10px;
+  z-index: 10;
+  top: 10px;
+  right: 10px;
+}
 .book_card {
+  position: relative;
   background-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -214,7 +230,7 @@ a:visited {
   color: inherit;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 400px;
 }
 .book_card:hover {
   transform: translateY(-5px);
@@ -339,14 +355,11 @@ footer p {
 }
 
 /* page qui affiche tous les livres */
-#books {
+.books {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(260px, 1fr)
-  ); /* Colonnes responsives */
-  grid-auto-rows: 400px; /* Chaque ligne aura une hauteur fixe de 400px */
-  gap: 20px; /* Espacement entre les lignes et les colonnes */
+  grid-template-columns: repeat(4, 1fr); /* 4 colonnes */
+  grid-template-rows: repeat(4, 400px); /* 4 lignes fixes */
+  gap: 20px;
 }
 
 #last_books {
@@ -601,8 +614,8 @@ footer p {
 }
 
 label {
-  font-weight: bold;
   color: #555;
+  padding-bottom: 1em;
 }
 
 .fieldForm {

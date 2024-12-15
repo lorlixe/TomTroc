@@ -65,7 +65,7 @@ class BookController
         $bookManager = new bookManager();
         $book = $bookManager->getBookByTitle($title);
         if (!$book) {
-            throw new Exception("Le livre demandé n'existe pas.");
+            $book = [];
         }
         $view = new View("livre");
         $view->render("allBooks", ['books' => $book]);

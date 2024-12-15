@@ -11,28 +11,39 @@
         </form>
 
     </div>
-    <div id="books">
-        <?php foreach (array_reverse($books) as $book) { ?>
-            <div class="grid">
-                <a href="index.php?action=detail_books&id=<?= $book->getId() ?>">
-                    <article class="book_card">
-                        <div class="card_img">
-                            <img class="book_img" src=<?= $book->getImg() ?> />
-                        </div>
-                        <div class="book_description">
-                            <div class="book_info">
-                                <h3><?= $book->getTitle() ?></h3>
-                                <p><?= $book->getName() ?></p>
-                            </div>
-                            <div class="saler">
-                                <p>Vendu par :<?= $book->getNickname() ?></p>
-                            </div>
-                        </div>
+    <?php if ($books != []) : ?>
 
-                    </article>
-                </a>
-            </div>
+        <div class="books">
+            <?php foreach (array_reverse($books) as $book) { ?>
+                <div class="grid">
+                    <a href="index.php?action=detail_books&id=<?= $book->getId() ?>">
+                        <article class="book_card">
+                            <?php if ($book->getStatut() === "Indisponible") : ?>
+                                <div class="tag_statut">
+                                    non dispo.
+                                </div>
+                            <?php endif; ?>
+                            <div class="card_img">
+                                <img class="book_img" src=<?= $book->getImg() ?> />
+                            </div>
+                            <div class="book_description">
+                                <div class="book_info">
+                                    <h3><?= $book->getTitle() ?></h3>
+                                    <p><?= $book->getName() ?></p>
+                                </div>
+                                <div class="saler">
+                                    <p>Vendu par :<?= $book->getNickname() ?></p>
+                                </div>
+                            </div>
 
-        <?php } ?>
-    </div>
+                        </article>
+                    </a>
+                </div>
+
+            <?php } ?>
+        </div>
+    <?php else : ?>
+        <div class="books">Ce livre n'a pas été trouvé</div>
+    <?php endif; ?>
+
 </div>
