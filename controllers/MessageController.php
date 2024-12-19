@@ -23,8 +23,8 @@ class MessageController
 
     public function conversation(): void
     {
-        $account = new UserController;
-        $account->checkIfUserIsConnected();
+        Utils::checkIfUserIsConnected();
+
 
         $allMessages = $this->allMessage();
         $conversation = []; // Initialiser le tableau des conversations
@@ -133,8 +133,8 @@ class MessageController
     }
     public function creatMessage(): void
     {
-        $account = new UserController;
-        $account->checkIfUserIsConnected();
+        Utils::checkIfUserIsConnected();
+
 
         $UserManager = new UserManager;
         $sender = $UserManager->getUserById($_SESSION['idUser']);
@@ -160,8 +160,8 @@ class MessageController
 
     public function unreadBook(): void
     {
-        $account = new UserController;
-        $account->checkIfUserIsConnected();
+        Utils::checkIfUserIsConnected();
+
         $undreadBook =  0;
 
         $allMessages = $this->allMessage();

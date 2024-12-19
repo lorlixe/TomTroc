@@ -66,12 +66,12 @@ try {
             $userController->updateUserImg();
             break;
         case 'editBook':
-            $userController = new userController();
-            $userController->updateOrCreatBook();
+            $bookController = new bookController();
+            $bookController->updateOrCreatBook();
             break;
         case 'updateBookImg':
-            $userController = new userController();
-            $userController->updateBookImg();
+            $bookController = new bookController();
+            $bookController->updateBookImg();
             break;
 
         case 'bookForm':
@@ -79,8 +79,8 @@ try {
             $bookController->bookForm();
             break;
         case 'deleteBook':
-            $userController = new userController();
-            $userController->deleteBook();
+            $bookController = new BookController();
+            $bookController->deleteBook();
             break;
         case 'newBookForm':
             $bookController = new BookController();
