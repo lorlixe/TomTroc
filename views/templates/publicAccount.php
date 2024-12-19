@@ -19,8 +19,10 @@ $interval = $creation_date->diff($current_date);
                 <?php else: ?>
                     <img class="user_profil_img" src="img/blank-profile-picture.png" />
                 <?php endif; ?>
+
             </div>
             <hr>
+
 
             <div id="display-user-information">
                 <div class="display-user-information-section">
@@ -32,9 +34,12 @@ $interval = $creation_date->diff($current_date);
                     <div id="member-book-number"> <img src="img/icon_livre.png" /> <?= count($books) ?> Livres</div>
                 </div>
             </div>
-            <?php if (isset($_SESSION['user'])): ?>
-                <a href="index.php?action=newConversation&receiver_id=<?= $user->getId() ?>" class="cta cta-user">Écrire un message</a>
-            <?php endif; ?>
+            <div class="user-btn">
+                <?php if (isset($_SESSION['user'])): ?>
+                    <a href="index.php?action=newConversation&receiver_id=<?= $user->getId() ?>" class="cta-user">Écrire un message</a>
+                <?php endif; ?>
+
+            </div>
 
         </div>
 

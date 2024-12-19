@@ -65,7 +65,7 @@ $interval = $creation_date->diff($current_date);
                             <label for="password">Mot de passe</label>
                             <input type="password" id="password" name="password" class="fieldForm" required>
                         </div>
-                        <button class="cta cta-user">Enregistrer</button>
+                        <button class="cta">Enregistrer</button>
 
                     </form>
 

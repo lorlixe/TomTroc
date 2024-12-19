@@ -197,7 +197,7 @@ a:hover {
 }
 a {
   text-decoration: none;
-  color: #000;
+  color: inherit;
 }
 .sign a {
   text-decoration: underline;
@@ -648,7 +648,9 @@ textarea.fieldForm {
 }
 .user-btn {
   margin: 2em 8%;
+  color: #00ac66;
 }
+
 .user-detail {
   display: flex;
   flex-direction: row;
@@ -681,6 +683,11 @@ textarea.fieldForm {
   background-color: #f5f3ef;
   color: #00ac66;
   border: solid 1px;
+  padding: 1em;
+  border-radius: 0.5em;
+  max-width: 30%;
+  text-decoration: none;
+  font-weight: bold;
 }
 .display-user-information-section h3 {
   font-size: 1em;
@@ -794,7 +801,7 @@ textarea.fieldForm {
 /* Disponibilité */
 .disponible {
   color: white;
-  background-color: #4caf50;
+  background-color: #00ac66;
   border-radius: 12px;
   padding: 5px 10px;
   font-size: 12px;
@@ -840,6 +847,10 @@ textarea.fieldForm {
   flex-direction: row;
   background-color: #faf9f7;
 }
+.public-user-description .user-btn {
+  margin: 2em 0%;
+  color: #00ac66;
+}
 
 #pulic-account .user-detail {
   margin: 5%;
@@ -850,12 +861,16 @@ textarea.fieldForm {
 
 #pulic-account hr {
   margin: 5%;
+  width: 80%;
 }
 
 .public-user-description {
   padding: 0% 10%;
   border-radius: 30px;
   width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 #pulic-account .user-book {
   width: 80%;
