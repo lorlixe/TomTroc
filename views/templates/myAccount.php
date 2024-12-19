@@ -12,7 +12,7 @@ $interval = $creation_date->diff($current_date);
 <div id="my-account">
     <h1>Mon compte</h1>
     <div class="user-btn">
-        <a class="cta cta-user" href="index.php?action=newBookForm">Ajouter un livre</a>
+        <a class="cta-user" href="index.php?action=newBookForm">Ajouter un livre</a>
     </div>
     <div class="user-detail">
         <div class="user-description">
