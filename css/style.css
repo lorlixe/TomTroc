@@ -551,6 +551,9 @@ footer p {
   flex-direction: column;
   gap: 5px;
 }
+.form_edit_book form {
+  width: 100%;
+}
 .edit_book_info .cta {
   width: 50%;
   max-width: 100%;

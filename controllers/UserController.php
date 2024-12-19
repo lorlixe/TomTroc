@@ -12,13 +12,13 @@ class UserController
      * Vérifie que l'utilisateur est connecté.
      * @return void
      */
-    public function checkIfUserIsConnected(): void
-    {
-        // On vérifie que l'utilisateur est connecté.
-        if (!isset($_SESSION['user'])) {
-            Utils::redirect("signUp");
-        }
-    }
+    // public function checkIfUserIsConnected(): void
+    // {
+    //     // On vérifie que l'utilisateur est connecté.
+    //     if (!isset($_SESSION['user'])) {
+    //         Utils::redirect("signUp");
+    //     }
+    // }
 
 
 
@@ -164,8 +164,8 @@ class UserController
 
     public function userAccount()
     {
-        $account = new UserController;
-        $account->checkIfUserIsConnected();
+        Utils::checkIfUserIsConnected();
+
 
         // On redirige vers la page user.
         $view = new View("User");
@@ -179,7 +179,7 @@ class UserController
 
     public function updateOrCreatBook(): void
     {
-        $this->checkIfUserIsConnected();
+        Utils::checkIfUserIsConnected();
 
         $UserManager = new UserManager;
         $user = $UserManager->getUserById($_SESSION['idUser']);
@@ -293,7 +293,7 @@ class UserController
 
     public function deleteBook(): void
     {
-        $this->checkIfUserIsConnected();
+        Utils::checkIfUserIsConnected();
         $id = Utils::request("id", -1);
         Utils::checkUserOwnership($id);
         $dossierDestination = "img/";
@@ -329,7 +329,7 @@ class UserController
 
     public function updateUserInfo()
     {
-        $this->checkIfUserIsConnected();
+        Utils::checkIfUserIsConnected();
 
         // On récupère les données du formulaire.
         $UserManager = new UserManager;
@@ -349,7 +349,7 @@ class UserController
 
     public function updateUserImg()
     {
-        $this->checkIfUserIsConnected();
+        Utils::checkIfUserIsConnected();
 
         // Dossier de destination pour les images téléchargées
         $dossierDestination = "img/";
@@ -417,7 +417,7 @@ class UserController
 
     public function updateBookImg()
     {
-        $this->checkIfUserIsConnected();
+        Utils::checkIfUserIsConnected();
 
         $UserManager = new UserManager;
         $user = $UserManager->getUserById($_SESSION['idUser']);

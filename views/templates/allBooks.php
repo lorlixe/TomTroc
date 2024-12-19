@@ -24,7 +24,7 @@
                                 </div>
                             <?php endif; ?>
                             <div class="card_img">
-                                <img class="book_img" src=<?= $book->getImg() ?> />
+                                <img class="book_img" alt="<?= $book->getTitle() ?>" src=<?= $book->getImg() ?> />
                             </div>
                             <div class="book_description">
                                 <div class="book_info">

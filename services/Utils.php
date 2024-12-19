@@ -132,4 +132,12 @@ class Utils
             }
         }
     }
+
+    public static function checkIfUserIsConnected(): void
+    {
+        // On vérifie que l'utilisateur est connecté.
+        if (!isset($_SESSION['user'])) {
+            Utils::redirect("signUp");
+        }
+    }
 }

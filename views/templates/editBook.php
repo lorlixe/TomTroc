@@ -9,7 +9,7 @@
     <div class="form_edit_book">
         <div class="edit_book_img_section">
             <span class="ariane">Photo</span>
-            <img class="edit_book_img" name="img" src="<?= $book->getImg() ?>" />
+            <img class="edit_book_img" name="img" alt="<?= $book->getName() ?>" src="<?= $book->getImg() ?>" />
             <a id="uploadLink" class="link" href="#">modifier la photo</a>
             <form id="uploadForm" action="index.php?action=updateBookImg&id=<?= $book->getId() ?>" method="POST" enctype="multipart/form-data" style="display: none;">
                 <input type="file" id="fileInput" name="image" accept="image/*" onchange="document.getElementById('uploadForm').submit();">

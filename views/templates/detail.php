@@ -4,7 +4,7 @@
     </div>
 
     <div class="book_page">
-        <img class="book_page_img" src=<?= $book->getImg() ?> />
+        <img class="book_page_img" alt="<?= $book->getTitle() ?>" src=<?= $book->getImg() ?> />
         <div class="book_page_info">
             <h1 id="book_page_title"><?= $book->getTitle() ?></h1>
             <p id="book_page_author">par <?= $book->getName() ?></p>
@@ -18,9 +18,9 @@
                 <div class="user_profil">
 
                     <?php if ($book->getUserPhoto() != ""): ?>
-                        <img class="user_profil_img" src=<?= $book->getUserPhoto() ?> />
+                        <img class="user_profil_img" alt="user avatar" src=<?= $book->getUserPhoto() ?> />
                     <?php else: ?>
-                        <img class="user_profil_img" src="img/blank-profile-picture.png" />
+                        <img class="user_profil_img" alt="user avatar" src="img/blank-profile-picture.png" />
                     <?php endif; ?>
                     <p><?= $book->getNickname() ?></p>
 
