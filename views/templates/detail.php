@@ -9,10 +9,8 @@
             <h1 id="book_page_title"><?= $book->getTitle() ?></h1>
             <p id="book_page_author">par <?= $book->getName() ?></p>
             <hr>
-
             <p class="book_page_text">DESCRIPTION</p>
             <p id="book_page_description"><?= $book->getDescription() ?></p>
-
             <p class="book_page_text">PROPRIÉTAIRE</p>
             <a href="index.php?action=publicAccount&id=<?= $book->getUserId() ?>">
                 <div class="user_profil">
@@ -29,8 +27,6 @@
             <?php if (isset($_SESSION['user'])): ?>
                 <a href="index.php?action=newConversation&receiver_id=<?= $book->getUserId() ?>" class="cta">Envoyer un message</a>
             <?php endif; ?>
-
-
         </div>
 
     </div>

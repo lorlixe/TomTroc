@@ -501,6 +501,8 @@ footer p {
   width: 3em;
   border-radius: 50%;
   margin-right: 15px;
+  max-height: 3em;
+  object-fit: cover;
 }
 .book_page_text {
   font-weight: bold;
