@@ -100,8 +100,12 @@
 
                         <div class="message received">
                             <?php if ($message->getContent() != "") : ?>
+                                <?php if ($selectConversationLastMessages->getSenderPhoto() != ""): ?>
+                                    <img src="<?= htmlspecialchars($selectConversationLastMessages->getSenderPhoto()) ?>" alt="Avatar" class="contact-avatar">
+                                <?php else: ?>
+                                    <img class="user_profil_img" src="img/blank-profile-picture.png" />
+                                <?php endif; ?>
 
-                                <img src="<?= htmlspecialchars($message->getSenderPhoto()) ?>" alt="Avatar" class="contact-avatar">
                                 <div class="message-content">
                                     <p><?= htmlspecialchars($message->getContent()) ?></p>
                                     <span class="message-time"><?= htmlspecialchars($message->getSentAt()) ?></span>
