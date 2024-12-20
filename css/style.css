@@ -714,6 +714,8 @@ textarea.fieldForm {
 
 .user-description .user_profil_img {
   width: 8em;
+  max-height: 7em;
+  object-fit: cover;
 }
 
 .user-information {
